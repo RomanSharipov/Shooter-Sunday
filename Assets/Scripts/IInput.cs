@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class IInput : MonoBehaviour
+public interface IInput 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float Vertical { get;}
+    public float Horizontal { get;}
+    public float MouseX { get;}
+    public float MouseY { get;}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public void ReadInput();
 }
