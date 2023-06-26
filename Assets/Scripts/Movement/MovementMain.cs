@@ -11,6 +11,8 @@ public class MovementMain : MonoBehaviour
     [SerializeField] private float _jumpTime = 0.5f;
     [SerializeField] private AnimationCurve _jumpCurve;
     [SerializeField] private float _ySpeed;
+    [SerializeField] private GroundCollisionHandler _groundCollisionHandler;
+
 
     private void Update()
     {
@@ -40,7 +42,7 @@ public class MovementMain : MonoBehaviour
 
     private void OnClickJump()
     {
-        if (_characterController.isGrounded)
+        if (_groundCollisionHandler.IsGrounded())
         {
             StartCoroutine(JumpCoroutine());
         }
@@ -61,7 +63,7 @@ public class MovementMain : MonoBehaviour
             _ySpeed = Mathf.Lerp(initialYSpeed, finalYSpeed, curveValue);
             yield return null;
         }
-
         _ySpeed = finalYSpeed;
     }
+
 }
