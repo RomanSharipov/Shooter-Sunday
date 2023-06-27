@@ -16,9 +16,6 @@ public class RotatorY : MonoBehaviour
     private void RotateObject(Vector2 rotationDirection)
     {
         rotationY = rotationSpeed * rotationDirection.x;
-        
-        
-
         transform.rotation *= Quaternion.Euler(0, rotationY, 0);
     }
 }

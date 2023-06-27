@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5055117787559501312}
   - component: {fileID: -8356164423359816723}
+  - component: {fileID: -2280221351670424208}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -45,7 +46,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d63d4d9d487e4418bcf330fa98c05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedFly: 200
+  _speedFly: 100
+  _collisionEffect: {fileID: 198321486865831864, guid: 762de44530c92394b8a655a6277125b3, type: 3}
+--- !u!136 &-2280221351670424208
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5055117787559501313}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5055117788455964630
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +73,6 @@ GameObject:
   - component: {fileID: 5055117788455964625}
   - component: {fileID: 5055117788455964626}
   - component: {fileID: 5055117788455964627}
-  - component: {fileID: 5055117788455964624}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -108,7 +123,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3af070656e4fcec47ae389a028ccd4df, type: 2}
+  - {fileID: 2100000, guid: ea261a844533bdf44805c6ebddc926b6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,17 +145,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5055117788455964624
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5055117788455964630}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}

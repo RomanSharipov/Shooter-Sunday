@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GroundCollisionHandler : MonoBehaviour
@@ -12,20 +9,19 @@ public class GroundCollisionHandler : MonoBehaviour
     public event Action GotOffGround;
 
     public bool IsGrounded => _isGrounded;
-
-
-    private void OnCollisionEnter(Collision collision)
+    
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.TryGetComponent(out Ground ground))
+        if (other.TryGetComponent(out Ground ground))
         {
             Landed?.Invoke();
             _isGrounded = true;
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.TryGetComponent(out Ground ground))
+        if (other.TryGetComponent(out Ground ground))
         {
             GotOffGround?.Invoke();
             _isGrounded = false;

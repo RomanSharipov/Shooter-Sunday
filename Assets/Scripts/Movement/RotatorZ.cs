@@ -18,9 +18,7 @@ public class RotatorZ : MonoBehaviour
     private void RotateObject(Vector2 rotationDirection)
     {
         rotationX -= rotationSpeed * rotationDirection.y;
-
         rotationX = Mathf.Clamp(rotationX, rotationAngleMin, rotationAngleMax);
-
         transform.localEulerAngles = new Vector3(rotationX, 0, 0);
     }
 }
