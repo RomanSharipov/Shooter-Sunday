@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AnimationEvents _animationEvents;
+
+    [SerializeField] private Weapon _weapon;
+
+    private void OnEnable()
     {
-        
+        _animationEvents.Shot += _weapon.Shoot;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        _animationEvents.Shot -= _weapon.Shoot;
     }
 }

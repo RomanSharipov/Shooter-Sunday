@@ -14,7 +14,7 @@ public class AnimationEvents : MonoBehaviour
         Jumped?.Invoke();
     }
 
-    public void ShooEvent()
+    public void ShootEvent()
     {
         Shot?.Invoke();
     }
