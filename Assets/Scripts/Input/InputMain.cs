@@ -8,14 +8,12 @@ public class InputMain : MonoBehaviour
 {
     [SerializeField] private Joystick _joystickLeft;
     [SerializeField] private Joystick _joystickRight;
-    [SerializeField] private TouchInput _touchInput;
     [SerializeField] private Button _jumpButton;
 
     private IInput _movement;
     private IInput _rotation;
     
     public Vector2 MovementDirection => _movement.Direction;
-    //public Vector2 RotationDirection => _touchInput.Direction;
     public Vector2 RotationDirection => _rotation.Direction;
 
     public event Action ClickedJump;
@@ -24,7 +22,6 @@ public class InputMain : MonoBehaviour
     {
         _movement = new JoystickInput(_joystickLeft);
         _rotation = new JoystickInput(_joystickRight);
-        //_rotation = new MouseInput();
     }
 
     private void OnEnable()

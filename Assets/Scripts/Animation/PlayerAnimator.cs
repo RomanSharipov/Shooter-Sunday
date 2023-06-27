@@ -26,8 +26,6 @@ public class PlayerAnimator : MonoBehaviour
     {
         if (_groundCollisionHandler.IsGrounded)
         {
-            //_animator.Play(AnimatorConstants.Jump);
-            //_animator.CrossFade(AnimatorConstants.Jump,0.1f);
             _animator.SetTrigger(AnimatorConstants.Jump);
             _animator.SetBool(AnimatorConstants.IsGrounded,false);
         }
