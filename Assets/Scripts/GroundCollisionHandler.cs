@@ -6,36 +6,29 @@ using UnityEngine;
 
 public class GroundCollisionHandler : MonoBehaviour
 {
-    [SerializeField] private float _lenghtRay = 1.08f;
-    [SerializeField] private LayerMask _groundLayerMask;
-    
+    [SerializeField] private bool _isGrounded;
+
     public event Action Landed;
     public event Action GotOffGround;
-    
+
+    public bool IsGrounded => _isGrounded;
+
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (IsGrounded())
+        if (collision.gameObject.TryGetComponent(out Ground ground))
         {
             Landed?.Invoke();
+            _isGrounded = true;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (IsGrounded())
-            return;
-        
-        GotOffGround?.Invoke();
-    }
-
-    public bool IsGrounded()
-    {
-        Ray ray = new Ray(transform.position, Vector3.down * _lenghtRay);
-        
-        if (Physics.Raycast(ray, _lenghtRay, _groundLayerMask))
+        if (collision.gameObject.TryGetComponent(out Ground ground))
         {
-            return true;
+            GotOffGround?.Invoke();
+            _isGrounded = false;
         }
-        return false;
     }
 }

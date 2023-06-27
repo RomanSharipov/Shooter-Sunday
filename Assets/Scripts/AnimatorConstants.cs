@@ -5,4 +5,5 @@ public class AnimatorConstants
     public const string Jump = "Jump";
     public const string GotOffLand = "GotOffLand";
     public const string Land = "Land";
+    public const string IsGrounded = "IsGrounded";
 }

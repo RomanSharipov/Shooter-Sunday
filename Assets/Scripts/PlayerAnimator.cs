@@ -24,7 +24,13 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Jump()
     {
-        _animator.SetTrigger(AnimatorConstants.Jump);
+        if (_groundCollisionHandler.IsGrounded)
+        {
+            //_animator.Play(AnimatorConstants.Jump);
+            //_animator.CrossFade(AnimatorConstants.Jump,0.1f);
+            _animator.SetTrigger(AnimatorConstants.Jump);
+            _animator.SetBool(AnimatorConstants.IsGrounded,false);
+        }
     }
 
     private void OnDisable()
@@ -36,11 +42,12 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Landed()
     {
-        _animator.SetTrigger(AnimatorConstants.Land);
+        _animator.SetBool(AnimatorConstants.IsGrounded, true);
+        _animator.ResetTrigger(AnimatorConstants.Jump);
     }
 
     private void GotOffGround()
     {
-        _animator.SetTrigger(AnimatorConstants.GotOffLand);
+        _animator.SetBool(AnimatorConstants.IsGrounded, false);
     }
 }
