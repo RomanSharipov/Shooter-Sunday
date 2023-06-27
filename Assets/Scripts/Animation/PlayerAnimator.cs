@@ -15,11 +15,20 @@ public class PlayerAnimator : MonoBehaviour
         _animator.SetFloat(AnimatorConstants.Vertical, _inputMain.MovementDirection.y);
     }
 
+    private void OnDisable()
+    {
+        _groundCollisionHandler.GotOffGround -= GotOffGround;
+        _groundCollisionHandler.Landed -= Landed;
+        _inputMain.ClickedJump -= Jump;
+        _inputMain.ClickedShoot -= Shoot;
+    }
+
     private void OnEnable()
     {
         _groundCollisionHandler.GotOffGround += GotOffGround;
         _groundCollisionHandler.Landed += Landed;
         _inputMain.ClickedJump += Jump;
+        _inputMain.ClickedShoot += Shoot;
     }
 
     private void Jump()
@@ -30,14 +39,7 @@ public class PlayerAnimator : MonoBehaviour
             _animator.SetBool(AnimatorConstants.IsGrounded,false);
         }
     }
-
-    private void OnDisable()
-    {
-        _groundCollisionHandler.GotOffGround -= GotOffGround;
-        _groundCollisionHandler.Landed -= Landed;
-        _inputMain.ClickedJump -= Jump;
-    }
-
+    
     private void Landed()
     {
         _animator.SetBool(AnimatorConstants.IsGrounded, true);
@@ -47,5 +49,10 @@ public class PlayerAnimator : MonoBehaviour
     private void GotOffGround()
     {
         _animator.SetBool(AnimatorConstants.IsGrounded, false);
+    }
+
+    private void Shoot()
+    {
+        _animator.SetTrigger(AnimatorConstants.Shoot);
     }
 }

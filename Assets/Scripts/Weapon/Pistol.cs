@@ -9,7 +9,6 @@ public class Pistol : Weapon
 
     public override void Shoot()
     {
-        Debug.Log("Shoot");
         Instantiate(_bulletTemplate, _bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
     }
 }

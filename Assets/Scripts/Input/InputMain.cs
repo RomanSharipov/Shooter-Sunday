@@ -9,7 +9,8 @@ public class InputMain : MonoBehaviour
     [SerializeField] private Joystick _joystickLeft;
     [SerializeField] private Joystick _joystickRight;
     [SerializeField] private Button _jumpButton;
-
+    [SerializeField] private Button _shootButton;
+    
     private IInput _movement;
     private IInput _rotation;
     
@@ -17,6 +18,7 @@ public class InputMain : MonoBehaviour
     public Vector2 RotationDirection => _rotation.Direction;
 
     public event Action ClickedJump;
+    public event Action ClickedShoot;
 
     private void Awake()
     {
@@ -27,11 +29,18 @@ public class InputMain : MonoBehaviour
     private void OnEnable()
     {
         _jumpButton.onClick.AddListener(OnClickJump);
+        _shootButton.onClick.AddListener(OnShootButton);
+    }
+
+    private void OnShootButton()
+    {
+        ClickedShoot?.Invoke();
     }
 
     private void OnDisable()
     {
         _jumpButton.onClick.RemoveListener(OnClickJump);
+        _shootButton.onClick.RemoveListener(OnShootButton);
     }
 
     private void Update()
