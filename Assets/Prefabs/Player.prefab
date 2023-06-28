@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7ad7b353ecf0e46a66a8b353de1b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forceJump: 200
+  _forceJump: 350
   _rigidbody: {fileID: 6547128254866170010}
   _animationEvents: {fileID: 6547128255835941457}
 --- !u!114 &6547128254866169990
