@@ -1,21 +1,26 @@
 using UnityEngine;
 
-public class RotatorY : MonoBehaviour
+public class RotatorY 
 {
-    [SerializeField] private float rotationSpeed = 12.0f;
-    [SerializeField] private InputMain _inputMain;
-    
-    private float rotationY = 0.0f;
+    private InputMain _inputMain;
+    private Transform _transform;
+    private float rotationSpeed = 12.0f;
+    private float rotationY;
 
-    private void Update()
+    public RotatorY(InputMain inputMain, Transform transform)
     {
-        Vector2 rotationDirection = _inputMain.RotationDirection;
+        _inputMain = inputMain;
+        _transform = transform;
+    }
+
+    public void RotateY(Vector2 rotationDirection)
+    {
         RotateObject(rotationDirection);
     }
 
     private void RotateObject(Vector2 rotationDirection)
     {
         rotationY = rotationSpeed * rotationDirection.x;
-        transform.rotation *= Quaternion.Euler(0, rotationY, 0);
+        _transform.rotation *= Quaternion.Euler(0, rotationY, 0);
     }
 }

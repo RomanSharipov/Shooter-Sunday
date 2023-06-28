@@ -2,16 +2,14 @@
 
 public class RotatorZ : MonoBehaviour
 {
-    [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private InputMain _inputMain;
+    [SerializeField] private float rotationSpeed = 6f;
     [SerializeField] private float rotationAngleMin = -45f;
     [SerializeField] private float rotationAngleMax = 45f;
 
-    private float rotationX = 0.0f;
+    private float rotationX;
     
-    private void Update()
+    public void RotateZ(Vector2 rotationDirection)
     {
-        Vector2 rotationDirection = _inputMain.RotationDirection;
         RotateObject(rotationDirection);
     }
     
