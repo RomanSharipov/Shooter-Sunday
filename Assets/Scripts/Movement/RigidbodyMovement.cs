@@ -1,21 +1,22 @@
 using UnityEngine;
 
-public class RigidbodyMovement : MonoBehaviour
+public class RigidbodyMovement : IMovable
 {
-    [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private InputMain _inputMain;
-    [SerializeField] private float _moveSpeed = 3.0f;
+    private Rigidbody _rigidbody;
+    private float _moveSpeed = 3.0f;
+    private Transform _transform;
 
     private Vector3 _direction = new Vector3();
 
-    private void Update()
+    public RigidbodyMovement(Rigidbody rigidbody,Transform transform)
     {
-        Walk(_inputMain.MovementDirection);
+        _rigidbody = rigidbody;
+        _transform = transform;
     }
 
-    private void Walk(Vector2 direction)
+    public void Move(Vector2 direction)
     {
-        _direction = transform.right * direction.x + transform.forward * direction.y;
+        _direction = _transform.right * direction.x + _transform.forward * direction.y;
         _rigidbody.velocity = _direction * _moveSpeed + Vector3.up * _rigidbody.velocity.y;
     }
 }

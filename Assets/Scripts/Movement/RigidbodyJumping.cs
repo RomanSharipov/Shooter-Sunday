@@ -1,17 +1,19 @@
 using UnityEngine;
 
-public class RigidbodyJumping : MonoBehaviour
+public class RigidbodyJumping 
 {
-    [SerializeField] private float _forceJump;
-    [SerializeField] private Rigidbody _rigidbody;
-    [SerializeField] private AnimationEvents _animationEvents;
-    
-    private void OnEnable()
+    private Rigidbody _rigidbody;
+    private AnimationEvents _animationEvents;
+    private float _forceJump = 350.0f;
+
+    public RigidbodyJumping(Rigidbody rigidbody, AnimationEvents animationEvents)
     {
+        _rigidbody = rigidbody;
+        _animationEvents = animationEvents;
         _animationEvents.Jumped += JumpRigidbody;
     }
-
-    private void OnDisable()
+    
+    public void OnDisable()
     {
         _animationEvents.Jumped -= JumpRigidbody;
     }

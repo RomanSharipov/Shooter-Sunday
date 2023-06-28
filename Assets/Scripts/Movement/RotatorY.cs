@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RotatorY : MonoBehaviour
 {
-    [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 12.0f;
     [SerializeField] private InputMain _inputMain;
     
     private float rotationY = 0.0f;
